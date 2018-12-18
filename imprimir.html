@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vista previa para la factura</title>
+	<link rel="stylesheet" href="css/estilover.css">
+	<script>
+		var fotos=new Array();
+		var i=0;
+		fotos[0]="imagenes/caldo.jpg";
+		fotos[1]="imagenes/trucha.jpg";
+		fotos[2]="imagenes/milaneza.jpg";
+		fotos[3]="imagenes/sajta.jpg";
+		fotos[4]="imagenes/pique.jpg";
+		fotos[5]="imagenes/el_inca.jpg";
+
+		var productos=[];
+		productos[0]="Caldo de Pollo";
+		productos[1]="Trucha al Limon";
+		productos[2]="Milaneza de pollo";
+		productos[3]="Sajta de pollo";
+		productos[4]="Pique macho";
+		productos[5]="Cerveza el Inca";
+		
+		/*var xf=document.getElementById("prod").value;*/
+		function ant(){
+			if(i>0){
+				i--
+				document.images.listadefotos.src=fotos[i];
+				document.getElementById("prod").value=productos[i];
+				document.getElementById("a").value=precios[i]+" Bs";
+			}else{
+				i=5;
+				document.images.listadefotos.src=fotos[i]
+				document.getElementById("prod").value=productos[i];
+				document.getElementById("a").value=precios[i]+" Bs";
+			}
+		}
+		function sig(){
+			if(i<fotos.length-1){
+				i++;
+				document.images.listadefotos.src=fotos[i]
+				document.getElementById("prod").value=productos[i];
+				document.getElementById("a").value=precios[i]+" Bs";
+			}
+			else{
+				i=0;
+				document.images.listadefotos.src=fotos[i]
+				document.getElementById("prod").value=productos[i];
+				document.getElementById("a").value=precios[i]+" Bs";
+			}
+		}
+	
+		function total(){
+			document.getElementById("c").value=document.getElementById("b").value*precios[i]+" Bs";
+		}
+	
+	var precios=new Array();
+	precios[0]=16;
+	precios[1]=25;
+	precios[2]=17;
+	precios[3]=16;
+	precios[4]=24;
+	precios[5]=18;
+
+
+/*********************************************************/
+/*****************validando datos de factura**************/
+/*********************************************************/
+		function envio(){
+		//nombre
+			if(document.getElementById("d").value.length==0){
+				alert(" por favor introduzca su nombre")
+				document.getElementById("d").focus()
+				return 0;
+			}
+		
+		
+		//NIT/CI(mas o igual que 7 cifras yy menos o igual que 10)
+		var ci=document.getElementById("g").value
+		if(ci==""){
+			alert("por favor introduzca su NIT o CI")
+				document.getElementById("g").focus()
+				return 0;
+		}else{
+			if(ci<1000000||ci>9999999999){
+				alert("por favor introduzca su NIT o CI valido")
+				document.getElementById("g").focus()
+				return 0;
+			}
+		}
+		var cantidad=document.getElementById("b").value;
+		if(cantidad==""){
+			alert("Introduzca la cantidad que desea");
+			return 0;
+		}
+		//el formulario se envia
+			alert("IMPRIMIENDO...");
+			}
+
+	</script>
+</head>
+<body><br>
+	<form name="fo">
+		<fieldset><hr>
+					<br><center id="cabecera">RESTAURANTE LA LLAJUITA <br> SUCURSAL Nro. 34 <br>
+						Z. Ciudad Satelite #2156 <br><br>
+						Telefono: 2819454 <br>
+						La Paz - Bolivia 
+					</center><br>
+
+					<hr><br>
+					NIT: 1022059428 <br>
+					FACTURA NUMERO: 0020271 <br>
+					AUTORIZACION: 3904001174714 <br>
+					FECHA: 01/12/2014 <br><br>
+					<hr><br>
+					NOMBRE: <input type="text" id="d"><br><br>
+					NIT/CI: <input type="text" id="g"><br><br>
+					<hr><br><br>
+					PRODUCTO: <input type="text" name="prod" id="prod"><br><br>
+					PRECIO UNITARIO: <input id="a" type="text" name="unitario"><br><br>
+					CANTIDAD: <input id="b" type="text" name="cantidad" onkeyup="total()" ><br><br>
+					IMPORTE: <input id="c" type="text" name="resul"><br><br>
+					<hr><br>
+					FECHA LIMITE DE EMISION: 01/03/2015 <br>
+					CODIGO DE CONTROL: 59-D6-90-FF-31 	<br>
+					PROCESO: 2034750<br><br>
+					<hr><br>
+					<center><span>Muchas gracias por su compra <br>reclamos y sugerencias al E-mail: lallajuita@gmail.com</span></enter><br><br>
+				</fieldset><br>
+				<div><br><br><br>
+	<input  class="impresion" type="button" value="IMPRIMIR" onclick="envio()"/><br><br>
+	</div>
+	</form>
+	<div class="menu">
+		<h4>ESCOJA AQUI EL PLATILLO QUE MAS LE GUSTA</h4>
+		<img src="imagenes/caldo.jpg" width="400" height="300" name="listadefotos"><br>
+		<input class="impresion" type="button" value="Anterior" onclick="ant()">
+		<input class="impresion" type="button" value="Siguiente" onclick="sig()"><br>
+	</div>
+</body>
+</html>

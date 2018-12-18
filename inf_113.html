@@ -1,0 +1,251 @@
+<html>
+<head>
+	<title>Alan Quispe</title>
+	
+	<script type="text/javascript">
+		var fotos=new Array();
+		var i=0;
+		fotos[0]="imagenes/caldo.jpg";
+		fotos[1]="imagenes/trucha.jpg";
+		fotos[2]="imagenes/milaneza.jpg";
+		fotos[3]="imagenes/sajta.jpg";
+		fotos[4]="imagenes/pique.jpg";
+		fotos[5]="imagenes/el_inca.jpg";
+
+		var productos=[];
+		productos[0]="Caldo de Pollo";
+		productos[1]="Trucha al Limon";
+		productos[2]="Milaneza de pollo";
+		productos[3]="Sajta de pollo";
+		productos[4]="Pique macho";
+		productos[5]="Cerveza el Inca";
+		function ant(){
+			if(i>0){
+				i--
+				document.images.listadefotos.src=fotos[i];
+				document.getElementById("men").innerHTML=productos[i];
+			}else{
+				i=5;
+				document.images.listadefotos.src=fotos[i];
+				document.getElementById("men").innerHTML=productos[i];
+			}
+		}
+		function sig(){
+			if(i<fotos.length-1){
+				i++;
+				document.images.listadefotos.src=fotos[i];
+				document.getElementById("men").innerHTML=productos[i];
+			}
+			else{
+				i=0;
+				document.images.listadefotos.src=fotos[i];
+				document.getElementById("men").innerHTML=productos[i];
+			}
+		}
+		var x;
+		function precio(){
+
+		
+		switch(i) {
+		case 0:
+		document.getElementById("a").value="Caldo de pollo 16 Bs";
+		x=16;
+		break
+		case 1:
+		document.getElementById("a").value="Trucha 25 Bs";
+		x=25;
+		break
+		case 2:
+		document.getElementById("a").value="Milaneza 17 Bs";
+		x=17;
+		break
+		case 3:
+		document.getElementById("a").value="Sajta 16 Bs";
+		x=16;
+		break
+		case 4:
+		document.getElementById("a").value="Pique 24 Bs";
+		x=24;
+		break
+		case 5:
+		document.getElementById("a").value="Inca 18 Bs";
+		x=18;
+		break
+		}
+		
+	}
+	var x,y;
+		function total(y){
+			y=parseInt(y);
+			x=parseInt(x);
+			var s=x*y;
+			document.getElementById("c").value=s+" Bs";
+		}
+	
+	var precios=new Array();
+	precios[0]=16;
+	precios[1]=25;
+	precios[2]=17;
+	precios[3]=16;
+	precios[4]=24;
+	precios[5]=18;
+	function envio(){
+		//nombre
+			if(document.getElementById("d").value.length==0){
+				alert(" por favor introduzca su nombre")
+				document.getElementById("d").focus()
+				return 0;
+			}
+		//apellido
+			if(document.getElementById("e").value.length==0){
+				alert(" por favor introduzca su apellido")
+				document.getElementById("e").focus()
+				return 0;
+			}
+		//edad
+		edad=document.getElementById("f").value
+		if(edad==""){
+			alert("por favor introduzca su edad")
+			document.getElementById("f").focus()
+			return 0;
+		}else{
+			if(edad<18){
+				alert("tiene que ser mayor de edad")
+				document.getElementById("f").focus()
+				return 0;
+			}
+		}
+		//NIT/CI(mas o igual que 7 cifras yy menos o igual que 10)
+		var ci=document.getElementById("g").value
+		if(ci==""){
+			alert("por favor introduzca su NIT o CI")
+				document.getElementById("g").focus()
+				return 0;
+		}else{
+			if(ci<1000000||ci>9999999999){
+				alert("por favor introduzca su NIT o CI valido")
+				document.getElementById("g").focus()
+				return 0;
+			}
+		}
+		//CUENTA BANCARIA(mas de siete cifras)
+		var nro=document.getElementById("oc").value
+		if(nro==""){
+			alert("por favor introduzca su numero de cuenta bancaria")
+				document.getElementById("oc").focus()
+				return 0;
+		}else{
+			if(nro<1000000){
+				alert("por favor introduzca un numero de cuenta valido ")
+				document.getElementById("oc").focus()
+				return 0;
+			}
+		}
+		//SELECCION
+		if(document.getElementById("h").selectedIndex==0){
+				alert("por favor seleccione su pais")
+				document.getElementById("h").focus()
+				return 0;
+			}
+
+			//el formulario se envia
+			alert("Muchas gracias por su compra se le enviara la factura a su correo.");
+			document.fvalida.submit();
+	}
+	function enfocado(id) {
+	document.getElementById(id).style.border="1px solid #007FFF ";
+	document.getElementById(id).style.background="#E6E8FA ";
+	}
+	function desenfocado(id) {
+		document.getElementById(id).style.background="#ffffff";
+		document.getElementById(id).style.border="inherit";
+	}
+	</script>
+	<link rel="stylesheet" href="css/estilo.css">
+	<meta name="description" content="website description" />
+  		<meta name="keywords" content="website keywords, website keywords" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <script>
+	
+	function ver(){
+		var nro=document.getElementById("c").value;
+		if(nro==""){
+			alert("Por Favor seleccione el producto y anote la cantidad")
+				document.getElementById("impri").href="#";
+				
+		}else{
+			var x=confirm("¿Esta seguro?");
+		if(x==false){
+			document.getElementById("impri").href="#";
+		}else{
+			var y=confirm("¿Desea imprimir la factura ahora?");
+			if(y==false){
+				document.getElementById("impri").href="#";
+				alert("En las lineas de abajo puede llenar su factura y se le enviara a su Email");
+			}else{
+				document.getElementById("impri").href="imprimir.html";
+			}
+		}
+
+		}
+		
+	}
+
+	</script>
+
+</head>
+<body >
+	<div class="principal"> <header>TU RESTAURANTE PREFERIDO <br>LA LLAJUITA</header> <nav> <a href="inf_113.html">Inicio   </a> | <a href="doc1.html">Acerca de nosotros </a>| <a href="doc1.html">Mas Productos</a> </nav> <h2> Nuestros Productos</h2> <section> <article> <img src="imagenes/caldo.jpg" alt=""> <p>CALDO DE POLLO…………16</p> <p>Papa blanca, tunta, pollo a la olla y consomé de pollo.</p> </article> <article> <img src="imagenes/trucha.jpg" alt=""> <p>TRUCHA AL LIMON………………25</p> <p>Arroz, ligera ensalada, papas fritas, trucha  frita y limón.</p> </article> <article> <img src="imagenes/milaneza.jpg" alt=""> <p>MILANEZA DE POLLO………17</p> <p>Arroz, ligera ensalada, papas fritas, filete de pollo milanisado.</p> </article> <article> <img src="imagenes/sajta.jpg" alt=""> <p>SAJTA DE POLLO……………16</p> <p>Papa blanca, tunta, pollo a la olla, ahogado (salsa ligeramente picante).</p> </article> <article> <img src="imagenes/pique.jpg" alt=""> <p>PIQUE MACHO…………………24</p> <p>Papas fritas, carne picada de res y salchicha cocida en su jugo.</p> </article> </section>
+	 <form name="fori"><br>
+
+		<fieldset>
+		<span id="men">Caldo de Pollo</span>
+		<img src="imagenes/caldo.jpg" width="400" height="300" name="listadefotos">
+			<fieldset>
+					<legend id="menu"></legend>
+					<input type="button" value="<<Anterior" name="B2" onclick="ant()">
+					<input type="button" value="Siguiente>>" name="B1" onclick="sig()"><br>
+				</fieldset>
+
+
+				<fieldset>
+					<legend>Detalles</legend>
+					<input type="button" onclick="precio()" value="ver precio unitario"> <input id="a" type="text" name="unitario"><br><br>
+					cantidad: <input id="b" type="text" name="cantidad" onfocus="enfocado(this.id)" onblur="desenfocado (this.id)"><br><br>
+					<input type="button" value="ver el total" onclick="total(cantidad.value)"> 
+					<input id="c" type="text" name="resul">
+					<br><br>
+					<input type="reset" value="RESETEAR"> <a id="impri" href="imprimir.html"><input type="button" value="COMPRAR" onclick="ver()"></a><br><br>
+				</fieldset><br><br>
+
+				<fieldset>
+					<legend>Factura de Compra <br>(Electronica)</legend><br><br>
+					NOMBRE(s): <input type="text" id="d"onfocus="enfocado(this.id)" onblur="desenfocado (this.id)"><br><br>
+					APELLIDOS: <input type="text" id="e" onfocus="enfocado(this.id)" onblur="desenfocado (this.id)"><br><br>
+					EDAD: <input type="text"id="f" onfocus="enfocado(this.id)" onblur="desenfocado (this.id)"><br><br><br><br>
+					NIT/CI: <input type="text" id="g"onfocus="enfocado(this.id)" onblur="desenfocado (this.id)"><br><br>
+					CUENTA BANCARIA: <input type="password"id="oc" onfocus="enfocado(this.id)" onblur="desenfocado (this.id)"><br><br>
+					PAIS: <select name="pais" id="h"onfocus="enfocado(this.id)" onblur="desenfocado (this.id)">
+						<option value="Opciones" selected="selected">Opciones</option>
+						<option value="Argentina">Argentina</option>
+						<option value="Bolivia">Bolivia</option>
+						
+						<option value="Brazil">Brazil</option>
+						<option value="Chile">Chile</option>
+						<option value="Colombia">Colombia</option><option value="Ecuador">Ecuador</option>
+						<option value="Guatemala">Guatemala</option><option value="Paraguay">Paraguay</option>
+						<option value="Peru">Peru</option>
+						<option value="Uruguay">Uruguay</option>
+						<option value="Venazuela">Venazuela</option>
+						</select><br><br><br><br>
+					<input type="reset" value="RESETEAR">
+					<input type="button" value="ENVIAR" onclick="envio()"><br><br>
+					
+				</fieldset><br>
+
+		</fieldset>
+	</form>	
+	</div>		
+</body>
+</html>

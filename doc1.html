@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc</title>
+	    <meta name="description" content="website description" />
+  		<meta name="keywords" content="website keywords, website keywords" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <style type="text/css">
+	body{
+		color:#ffffff;
+		background:rgba(100,105,107,0.8);
+		font-size:1.2em ;
+	}
+</style>
+</head>
+
+<body>
+	<form name="form1"><fieldset>
+		<legend><h1>programa para elevar al cuadrado</h1></legend>
+		<hr>
+		<p>introducir un numero</p>
+		<input type="text" name="numero" size="5"/>
+		<br/><br/>
+		<input type="button" value="cuadrado" onclick="cuadrado(numero.value)"/>
+		<br/><br/>
+		<p>el cuadrado es:</p>
+		<input type="text" name="resultado">
+	</fieldset>
+	</form>
+	<script>
+		var num;
+		function cuadrado(num){
+			num=parseInt(num);
+			document.form1.resultado.value=num*num;
+		}
+	</script>
+
+
+<hr>
+	<form name="forma"><fieldset><legend>
+		<h1>cuel es el mayor?</h1></legend>
+		<hr>
+		<p>introducir numero a:</p>
+		<input type="text" name="numero1" size="5"/>
+		<br/>
+		<p>introducir numero b:</p>
+		<input type="text" name="numero2" size="5"/>
+		<br/><br/>
+		<input type="button" value="calcular" onclick="mayor(numero1.value,numero2.value)"/>
+		<br/><br/>
+		<p>resultado:</p>
+		<input type="text" name="result"></fieldset>
+	</form>
+	<script>
+		var n,s;
+		function mayor(n,s){
+			
+			n=parseInt(n);
+			s=parseInt(s);
+
+			if(n>s){document.forma.result.value=n+" es el mayor";}
+			else {
+					if (n<s){ 
+						document.forma.result.value=s+" es el mayor";
+					}
+				else {
+					document.forma.result.value="son iguales";
+				}
+			}
+		}
+	</script>
+<hr>
+
+<form name="formatos"><fieldset><legend>
+		<h1>buscar primos</h1></legend>
+		<hr>
+		<p>introducir un numero:</p>
+		<input type="text" name="primos" size="5"/>
+		<br/><br/>
+		<input type="button" value="ver si es primo" onclick="primo(primos.value)"/>
+		<br/><br/>
+		<p>resultado:</p>
+		<input type="text" name="saque"></fieldset>
+	</form>
+	<script>
+		var s;
+		function primo(s){
+			s=parseInt(s);
+		 	var p=0;
+				for (var c=1; c<=s;c++) {
+					if((s%c)==0){
+						p+=1;
+					}
+				};
+				if(p==2){
+					document.formatos.saque.value="ES PRIMO";
+				}
+				else{
+					document.formatos.saque.value="NO ES PRIMO";
+				}
+		}
+	</script>
+
+<hr>
+<form name="daniel"><fieldset><legend>
+		<h1>calcular el factorial</h1></legend>
+		<hr>
+		<p>introducir un numero:</p>
+		<input type="text" name="factorial" size="5"/>
+		<br/><br/>
+		<input type="button" value="calcule el factorial" onclick="facto(factorial.value)"/>
+		<br/><br/>
+		<p>resultado:</p>
+		<input type="text" name="fa"></fieldset>
+	</form>	
+<script>
+var t;
+	function facto(t){
+		var f=1;
+		t=parseInt(t);
+		for (var c=1;c<=t;c++) {
+			f=f*c;
+		};
+		document.daniel.fa.value=f;
+		}
+</script>
+
+<hr>
+
+<form name="danil"><fieldset><legend>
+		<h1>ordenar cualquier numero</h1></legend>
+		<hr>
+		<p>introducir un numero:</p>
+		<input type="text" name="orden" size="5"/>
+		<br/><br/>
+		<input type="button" value="ordene" onclick="or(orden.value)"/>
+		<br/><br/>
+		<p>resultado:</p>
+		<input type="text" name="vamos"></fieldset>
+	</form>	
+<script>
+var k;
+		function or(k){
+	k=parseInt(k);
+	var m=0, p=1;
+	var c,z,d;
+	for (c = 0; c <= 9; c++) 
+	{
+		z=k , n=0;
+		while(z!=0)
+		{
+			d=z%10, z=parseInt(z/10);
+			if (d ==c) {
+				m=parseInt(m)+parseInt(d*p);
+				p=p*10;
+			}
+			else
+			{
+				n=parseInt(n*10)+parseInt(d);
+				
+			}
+		}
+	}
+	document.danil.vamos.value=m;
+}
+</script>
+<hr>
+<form name="oso">
+	<fieldset>
+		<legend><h1>mostrar ascendentemente</h1></legend>
+		<p>introduzca un numero:</p>
+		<input type="text" name="numerot"/><br/><br/>
+		<input type="button" value="resultado" onclick="ascen(numerot.value)"/>
+		<p>el resultado es:</p>
+		<input type="text" name="resul"/>
+
+	</fieldset>
+</form>
+<script>
+    var a;
+	function ascen(a){
+		a=parseInt(a);
+		for (var i = 1; i<=a; i++) {
+			document.oso.resul.value=i;
+		}
+	}
+</script>
+<hr>
+<form name="tablass">
+	<fieldset>
+		<legend><h1>tablas de verdad: </h1></legend>
+		<p>introduzca un numero:</p>
+		<input type="text" name="t"/><br/><br/>
+		<input type="button" value="resultado" onclick="tablan(t.value)"/><br>
+		<p>las tablas son:</p>
+		<textarea name="go" id="" cols="30" rows="10"></textarea>
+		
+	</fieldset>
+</form>
+			<script>
+			var b;
+	function tablan(b){
+		for(var a=1;a<=b;a++){
+			document.tablass.go.value="<br>";
+	for(i=1;i<=10;i++){
+	f=a*i;
+	document.tablass.go.value=i+"x"+a+"="+f;
+	/*document.tablass.go.value="<br>";*/
+	}
+	
+	}
+	}
+	</script>
+<hr>
+<form name="tablas2">
+	<fieldset>
+		<legend><h1>tablas de verdad: </h1></legend>
+		<p>introduzca un numero:</p>
+		<input type="text" name="t"/><br/><br/>
+		<input type="button" value="resultado" onclick="tabla(t.value)"/><br>
+	
+	</fieldset>
+</form>
+			<script>
+			var b;
+	function tabla(b){
+		for(var a=1;a<=b;a++){
+			document.write("<br>");
+	for(i=1;i<=10;i++){
+	f=a*i;
+	document.write(i+"x"+a+"="+f);
+	document.write("<br>");
+	}
+	
+	}
+	}
+	</script>
+<hr>
+<form name="conv">
+	<fieldset>
+		<legend><h1>convertidor de bases: b(2,3,4,5,6,7,8,9)</h1></legend>
+		<p>introduzca el numero que desea convertir:</p>
+		<input type="text" name="x"/><br/><br/>
+		<p>introduzca a q base:</p>
+		<input type="text" name="y"/><br/><br/>
+		<input type="button" value="resultado" onclick="conver(x.value,y.value)"/>
+		<p>su equivalente es:</p>
+		<input type="text" name="sol" size="55"/>
+
+	</fieldset>
+</form>
+<script>
+    var n;
+    var b;
+	function conver(n,b){
+		n=parseInt(n);
+		b=parseInt(b);
+		var p=1;
+		var nn=0;
+		var y=n;
+		var x;
+		while(y>0){
+			x=y%b;
+			y=parseInt(y/b);
+			nn=parseInt(nn)+parseInt(x*p);
+			p=p*10;
+		}
+		
+		document.conv.sol.value=n+" en base  "+b+" es: "+nn;
+
+	}
+</script>
+<hr>
+<form name="fibo">
+	<fieldset>
+		<legend><h1>serie fibonaci</h1></legend>
+		<p>introduzca un numero:</p>
+		<input type="text" name="n"/><br/><br/>
+		
+		<input type="button" value="resultado" onclick="fibon(n.value)"/>
+		<p>la serie es:</p>
+		<input type="text" name="ser" size="50"/>
+
+	</fieldset>
+</form>
+<script>
+    var n;
+	function fibon(n){
+		n=parseInt(n);
+		var a=-1;
+		var b=1;
+		var c=1;
+			while(c<=n){
+			y=a+b;
+			a=b;
+			b=y;
+			document.write(y);
+			c++;
+		}
+
+	}
+</script>
+<hr>
+<!--ARREGLOS-->
+<!--LLENAR UN VECTOR A[N], ENCONTRAR EL ELEMENTO MAYOR Y EL MENOR-->
+<form name="array">
+	<fieldset>
+		<legend><h1>trabajando con un array</h1></legend>
+		<p>introduzca el tamaño del vector:</p>
+		<input type="text" name="n"/><br/><br/>
+		
+		<input type="button" value="elementos" onclick="vector(n.value)"/>
+		<input type="text" name="vol" size="85"><br/><br/>
+		
+
+
+	</fieldset>
+</form>
+<script>
+	var b;
+	function vector(b){
+		var a=[];
+		for (var i = 1; i <= b; i++) {
+			
+			a[i]=prompt("ingrese en order los elementos del vector","");
+		};
+			
+		var may=a[1];
+		var men=a[1];
+		for (var i = 2; i <=b; i++) {
+			if (may<a[i]) {may=a[i]};
+			if (men>a[i]) {men=a[i]};
+		};
+
+		document.array.vol.value="["+may+"]   es el elemento mas grande y   ["+men+"] es el mas pequeño";
+
+	}
+</script>
+</body>
+</html>
